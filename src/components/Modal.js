@@ -1,20 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+export default function Modal({openHSModal}) {
+    const navigate = useNavigate()
 
-export default function Modal({ toggleModal, startNewGame, openHSModal}) {
-    
-    function handleModal() {
-        toggleModal()
-        startNewGame()
+    function handleNewGameBtn() {
+        navigate('/game-screen')
     }
 
     return (
-
         <div className="modal">
             <div className="game-title">
                 GREEDY
             </div>
             <div className="modal-btn">
-                <button onClick={handleModal}>
+                <button onClick={handleNewGameBtn}>
                     NEW GAME
                 </button>
                 <button onClick={openHSModal}>

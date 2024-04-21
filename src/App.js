@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import Main from './components/Main'
+// import Main from './components/Main'
 import Help from './components/Help';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MenuScreen from './components/MenuScreen';
+import GameScreen from './components/GameScreen';
 
 
 function App() {
@@ -12,7 +15,12 @@ function App() {
     <div className="App"> 
       <FontAwesomeIcon onClick={()=>setHelpDisplay(true)} icon={faInfo} className='help-icon'/>
       {helpDisplay && <Help closeHelp={()=>setHelpDisplay(false)}/>}
-      <Main />
+      <BrowserRouter>
+        <Routes>
+          <Route path={'/'} element={<MenuScreen/>} />
+          <Route path={'/game-screen'} element={<GameScreen/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

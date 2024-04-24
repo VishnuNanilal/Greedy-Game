@@ -8,7 +8,8 @@ export default function GameScreen() {
     const [die, setDie] = useState(getNewRoundDieValues())
     const [totalScore, setTotalScore] = useState(0)
     const [roundScore, setRoundScore] = useState(0)
-
+    const [roundEndState, setRoundEndState] = useState(false)
+    const [gameEndState, setGameEndState] = useState(false)
     const [lives, setLives] = useState(3)
 
     const [stopLeft, setStopLeft] = useState(16)
@@ -16,16 +17,16 @@ export default function GameScreen() {
 
     let winScore = 10000
 
-    useEffect(()=>{
+    useEffect(() => {
         setRoundScore(0)
         setTotalScore(0)
-        setLives(3)
 
-        while(!checkPossibleCombo()){
+        while (!checkPossibleCombo()) {
             setDie(getNewRoundDieValues())
         }
     }, [])
 
+    //After roll
     useEffect(() => {
         if (die.every((dice) => dice.isUsed)) {
             setDie(getNewRoundDieValues())
@@ -38,12 +39,20 @@ export default function GameScreen() {
 
     }, [die])
 
+    function Busted() {
+        alert('BUSTED!!! You Lost all points in this round.')
+        setRoundEndState(true)
+        setLives(prevLife => prevLife - 1)
+        setRoundScore(0)
+        // setDie(getNewRoundDieValues())
+    }
+    
     //lOSE HANDLER
     useEffect(() => {
         if (lives === 0) {
             alert(`Game Ended. Your score is: ${totalScore}`)
-            HandleHighScore()
-            navigate('/')
+            HandleHighScore() //adds current score to highscore list
+            setGameEndState(true)
         }
     }, [lives])
 
@@ -52,7 +61,7 @@ export default function GameScreen() {
         if (totalScore >= winScore) {
             alert(`You won with total score of ${totalScore}`)
             HandleHighScore()
-            navigate('/')
+            setGameEndState(true)
         }
     }, [totalScore])
 
@@ -130,7 +139,7 @@ export default function GameScreen() {
     }
 
     function toggleHeld(id) {
-        if (die[id].isUsed)
+        if (roundEndState || die[id].isUsed)
             return
 
         setDie(die.map((die, index) => {
@@ -145,6 +154,11 @@ export default function GameScreen() {
                 return die
             }
         }))
+    }
+
+    function NewRoundRoll() {
+        setRoundEndState(false)
+        setDie(getNewRoundDieValues())
     }
 
     function NewRoll() {
@@ -239,13 +253,6 @@ export default function GameScreen() {
         setDie(getNewRoundDieValues());
     }
 
-    function Busted() {
-        alert('BUSTED!!! You Lost all points in this round.')
-        setLives(prevLife => prevLife - 1)
-        setRoundScore(0)
-        setDie(getNewRoundDieValues())
-    }
-
     function HandleHighScore(gameEnd) {
         let highScoreList = localStorage.getItem('highscore')
 
@@ -285,12 +292,21 @@ export default function GameScreen() {
                             value={die.value}
                             isHeld={die.isHeld}
                             isUsed={die.isUsed}
+                            roundEndState={roundEndState}
                             toggleHeld={() => toggleHeld(index)} />)
                     }
                 </div>
                 <div>
-                    <button onClick={NewRoll}>ROLL</button>
-                    <button onClick={StopRound} className={stopLeft === 0 ? 'disabledButton' : ''}>STOP</button>
+                    {
+                        gameEndState
+                        ?
+                        <button onClick={()=>navigate('/')}>Menu</button>
+                        :
+                        <>
+                            <button onClick={roundEndState ? NewRoundRoll : NewRoll}>ROLL</button>
+                            <button disabled={roundEndState} onClick={StopRound} className={stopLeft === 0 ? 'disabledButton' : ''}>STOP</button>
+                        </>
+                    }
                 </div>
             </div>
         </div>

@@ -1,10 +1,22 @@
-# Getting Started with Create React App
+# Greedy Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Greedy Game completely built using React.
+
+## Reasons to choose this game
+- It has an event based system, where interactions happen if and when user clicks.
+- It uses multiple reused components emphasizing on React's component based architecture.
+- It has many interacting components, making use of hooks/life-cycle methods.
+
+**features :**
+- Front End created using *React*
+
+# QuickStart Guide
+
+- Clone the entire repository using `git clone https://github.com/VishnuNanilal/Greedy-Game.git`
+- Install modules in client folder using `npm install`
+- Run client side using `npm run start`
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
@@ -39,32 +51,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+# Languages and tools
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React](https://react.dev/)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) for styling

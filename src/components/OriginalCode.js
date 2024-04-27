@@ -1,3 +1,5 @@
+//Original code before seperating Menu and Game screens
+
 import React, { useEffect, useState } from 'react'
 import Die from './Die'
 import { streak5, streak6, threePairs, comboCount } from '../utils/scoreCalcLogics'

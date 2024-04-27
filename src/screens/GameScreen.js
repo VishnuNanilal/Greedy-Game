@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Die from './Die'
+import Die from '../components/Die'
 import { streak5, streak6, threePairs, comboCount } from '../utils/scoreCalcLogics'
-import NavBar from './NavBar'
+import NavBar from '../components/NavBar'
 import { useNavigate } from 'react-router-dom'
 
 export default function GameScreen() {

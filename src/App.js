@@ -5,9 +5,8 @@ import Help from './components/Help';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MenuScreen from './components/MenuScreen';
-import GameScreen from './components/GameScreen';
-
+import GameScreen from './screens/GameScreen';
+import MenuScreen from './screens/MenuScreen'
 
 function App() {
   const [helpDisplay, setHelpDisplay] = useState(false)
